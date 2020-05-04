@@ -1,0 +1,36 @@
+<fis-header
+        [title]="title"
+></fis-header>
+
+<fis-search
+        (search)="onSearch($event)"
+></fis-search>
+
+Loi: {{this.errors$ | async}}
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Address</th>
+    </tr>
+    </thead>
+    <tbody >
+    <tr *ngFor="let user of (usersList$ | async);">
+        <th scope="row">
+            {{user.id}}
+        </th>
+        <td>
+            <a [routerLink]="['/users', user.id]">
+                {{user.name}}
+            </a>
+        </td>
+        <td>{{user.age}}</td>
+        <td>{{user.phone}}</td>
+        <td>{{user.address}}</td>
+    </tr>
+    </tbody>
+</table>

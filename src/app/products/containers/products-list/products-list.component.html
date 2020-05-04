@@ -1,0 +1,34 @@
+<fis-page-header
+  [title]="title"
+></fis-page-header>
+
+<fis-search-form
+  (search)="onSearch($event)"
+></fis-search-form>
+
+Loi: {{this.errors$ | async}}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+    </tr>
+  </thead>
+  <tbody >
+    <tr *ngFor="let product of (productsList$ | async);">
+      <th scope="row">
+        {{product.id}}
+      </th>
+      <td>
+        <a [routerLink]="['/products', product.id]">
+          {{product.name}}
+        </a>
+      </td>
+      <td>{{product.price}}</td>
+      <td>{{product.quantity}}</td>
+    </tr>
+  </tbody>
+</table>
